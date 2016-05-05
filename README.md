@@ -1,5 +1,8 @@
 # OPC Foundation UA .NET
+## PubSub Prototype
+This specific branch is for the prototyping of the PubSub extensions.
 
+## UA .NET Stack
 The OPC Foundation has formally released the Unified Architecture .NET Stack and Sample Code to the community.
 
 Please review official site page (http://opcfoundation.github.io/UA-.NET/) for:
