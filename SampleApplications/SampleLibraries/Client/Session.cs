@@ -38,6 +38,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using Opc.Ua;
 
 namespace Opc.Ua.Client
 {
@@ -2566,11 +2567,13 @@ namespace Opc.Ua.Client
         /// <param name="expectedTypes">The expected types.</param>
         /// <param name="values">The list of returned values.</param>
         /// <param name="errors">The list of returned errors.</param>
+        /// <param name="timestampToReturn">The timestamps to return.</param>
         public void ReadValues(
             IList<NodeId>           variableIds,
             IList<Type>             expectedTypes,
             out List<object>        values, 
-            out List<ServiceResult> errors)
+            out List<ServiceResult> errors,
+            TimestampsToReturn  timestampToReturn = TimestampsToReturn.Both)
         {
             values = new List<object>();
             errors = new List<ServiceResult>();
@@ -2597,7 +2600,7 @@ namespace Opc.Ua.Client
             ResponseHeader responseHeader = Read(
                 null,
                 Int32.MaxValue,
-                TimestampsToReturn.Both,
+                timestampToReturn,
                 valuesToRead,
                 out results,
                 out diagnosticInfos);
